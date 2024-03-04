@@ -542,17 +542,33 @@
 							"script": {
 								"id": "c8c81836-1b38-4e60-9bcd-c9aa3f87a6c3",
 								"exec": [
-									"// Parse the response body as JSON\r",
-									"const responseData = pm.response.json();\r",
+									"// Define the starting digit for filtering\r",
+									"const startingDigit = '1';\r",
 									"\r",
-									"// Filter the response data to include only entries where bookingid starts with '1'\r",
-									"const filteredData = responseData.filter(entry => {\r",
-									"    const bookingid = entry.bookingid.toString();\r",
-									"    return bookingid.charAt(0) === '1';\r",
-									"});\r",
+									"// Get the current request body\r",
+									"let requestBody = pm.request.body;\r",
 									"\r",
-									"// Update the response data with the filtered entries\r",
-									"pm.response.json(filteredData);"
+									"// Parse the request body as JSON\r",
+									"let jsonData;\r",
+									"try {\r",
+									"    jsonData = JSON.parse(requestBody);\r",
+									"} catch (error) {\r",
+									"    console.error('Error parsing JSON:', error);\r",
+									"}\r",
+									"\r",
+									"// If parsing successful and data is an array, filter the data\r",
+									"if (Array.isArray(jsonData)) {\r",
+									"    const filteredData = jsonData.filter(entry => {\r",
+									"        const bookingid = entry.bookingid.toString();\r",
+									"        return bookingid.startsWith(startingDigit);\r",
+									"    });\r",
+									"\r",
+									"    // Update the request body with the filtered entries\r",
+									"    pm.request.body.update(JSON.stringify(filteredData));\r",
+									"} else {\r",
+									"    console.error('Request body is not an array or cannot be parsed as JSON');\r",
+									"}\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -563,7 +579,7 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"url": "https://restful-booker.herokuapp.com/booking"
 					},
