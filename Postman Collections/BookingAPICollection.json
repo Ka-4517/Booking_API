@@ -503,6 +503,18 @@
 						"url": "https://reqres.in/api/users/{{randomVal}}"
 					},
 					"response": []
+				},
+				{
+					"name": "New Request",
+					"id": "2275f1dc-7f80-461c-9ad2-a4590a3e064a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "9c72065b-5826-4e9b-93f7-f8099e980a85"
