@@ -536,13 +536,28 @@
 				},
 				{
 					"name": "Get_Id_startedWith1",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c8c81836-1b38-4e60-9bcd-c9aa3f87a6c3",
+								"exec": [
+									"// Filter the response data to include only entries where bookingid starts with '1'\r",
+									"pm.response.json(pm.response.json().filter(entry => entry.bookingid.toString().startsWith(1)));\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"id": "6924f450-b407-4a8d-9c71-a657c7154c95",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": "https://restful-booker.herokuapp.com/booking"
 					},
 					"response": []
 				}
