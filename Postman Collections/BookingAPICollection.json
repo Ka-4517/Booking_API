@@ -542,12 +542,13 @@
 							"script": {
 								"id": "c8c81836-1b38-4e60-9bcd-c9aa3f87a6c3",
 								"exec": [
-									"const startingDigit = 1;\r",
+									"// Parse the response body as JSON\r",
+									"const responseData = pm.response.json();\r",
 									"\r",
-									"// Filter the response data to include only entries where bookingid starts with the specified digit\r",
-									"const filteredData = pm.response.json().filter(entry => {\r",
+									"// Filter the response data to include only entries where bookingid starts with '1'\r",
+									"const filteredData = responseData.filter(entry => {\r",
 									"    const bookingid = entry.bookingid.toString();\r",
-									"    return bookingid.startsWith(startingDigit.toString());\r",
+									"    return bookingid.charAt(0) === '1';\r",
 									"});\r",
 									"\r",
 									"// Update the response data with the filtered entries\r",
