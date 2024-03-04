@@ -473,6 +473,39 @@
 				}
 			],
 			"id": "36e80ed3-221f-401b-9bb7-e0f9fdb31540"
+		},
+		{
+			"name": "MiscellaneousOperations",
+			"item": [
+				{
+					"name": "Pre_requisites_Scripts",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "90cb65bd-720e-4de0-a7e0-547632628418",
+								"exec": [
+									"var random = Math.floor(Math.random() * 10);\r",
+									"pm.variables.set('randomVal',random)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "909fb86a-9717-4bbc-9ed7-e139c860852d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://reqres.in/api/users/{{randomVal}}"
+					},
+					"response": []
+				}
+			],
+			"id": "9c72065b-5826-4e9b-93f7-f8099e980a85"
 		}
 	]
 }
