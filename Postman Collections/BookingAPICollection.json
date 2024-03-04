@@ -533,19 +533,6 @@
 						"url": "https://reqres.in/api/users/1"
 					},
 					"response": []
-				},
-				{
-					"name": "Pre-requisites1",
-					"id": "bf7f9008-9686-4cb5-883a-3253898b0e58",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [],
-						"url": "https://reqres.in/api/register"
-					},
-					"response": []
 				}
 			],
 			"id": "9c72065b-5826-4e9b-93f7-f8099e980a85"
